@@ -1,0 +1,91 @@
+  ' Variáveis para controlar cor e tamanho do pincel
+  largura = 50
+  altura = 50
+
+  left_color = "Red"
+  right_color = "Blue"
+
+
+  GraphicsWindow.MouseMove = Desenhar
+  
+  ' Funcão para desenhar um círculo
+  Sub Desenhar
+      cursor_x = GraphicsWindow.MouseX
+      cursor_y = GraphicsWindow.MouseY
+      
+      If (Mouse.IsLeftButtonDown) Then
+          GraphicsWindow.BrushColor = left_color
+          GraphicsWindow.FillEllipse (cursor_x, cursor_y, largura, altura)
+      EndIf
+  
+      If (Mouse.IsRightButtonDown) Then
+          GraphicsWindow.BrushColor = right_color
+          GraphicsWindow.FillEllipse (cursor_x, cursor_y, largura, altura)
+      EndIf 
+  EndSub
+  
+  
+  GraphicsWindow.KeyDown = QuandoPressionarTecla
+
+  Sub QuandoPressionarTecla
+    Tecla = GraphicsWindow.LastKey
+    
+    ' Sounds
+    '  Executing Chime's song
+    If Tecla = "R" Then
+      GraphicsWindow.Clear()
+      Sound.PlayChime()
+    EndIf
+    
+    '  Executing Bell's ring
+    If Tecla = "A" Then
+      Sound.PlayBellRing()
+    EndIf
+    
+    ' Changing the colors:
+    
+    '  left color
+    If Tecla = "S" Then 
+     left_color = "Yellow"
+    EndIf
+   
+    If Tecla = "C" Then
+      left_color = "green"
+    EndIf
+
+    If Tecla = "W" Then
+      left_color = "Pink"
+    EndIf
+    
+    If Tecla = "E" Then
+      left_color = "purple"
+    EndIf
+    
+    If Tecla = "Q" Then
+      left_color = "Red"
+    EndIf
+    
+    ' right color
+    
+    If Tecla = "D" Then
+      right_color = "DarkGreen"
+    EndIf
+    
+    If Tecla = "Z" Then
+      right_color = "red"
+    EndIf
+    
+    If Tecla = "X" Then
+      right_color = "black"
+    EndIf
+    
+    If Tecla = "B" Then
+      right_color = "Blue"
+    EndIf
+    
+    ' Close the game
+    If Tecla = "Alt+F4" Then
+      TextWindow.Hide()
+      GraphicsWindow.Hide()
+    EndIf
+  EndSub
